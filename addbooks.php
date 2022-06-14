@@ -8,9 +8,12 @@
 		$BOOKS_GENRE = $_POST['BOOKS_GENRE'];
 		$BOOKS_EDITION = $_POST['BOOKS_EDITION'];
 
-		$sql = "INSERT INTO books (BOOKS_ISBN, BOOKS_TITLE, BOOKS_AUTHOR, BOOKS_GENRE, BOOKS_EDITION) VALUES ('$BOOKS_ISBN', '$BOOKS_TITLE', '$BOOKS_AUTHOR', '$BOOKS_GENRE', '$BOOKS_EDITION')";
+		$sql = "INSERT INTO books (BOOKS_ISBN, BOOKS_TITLE, BOOKS_GENRE, BOOKS_AUTHOR, BOOKS_EDITION) VALUES ('$BOOKS_ISBN', '$BOOKS_TITLE', '$BOOKS_GENRE', '$BOOKS_AUTHOR', '$BOOKS_EDITION')";
 
-		if (mysqli_query($connect, $sql)) {
+		$result = oci_parse($connect, $sql);
+		oci_execute($result);
+
+		if ($result) {
 			echo "<script>alert('Successfully Added!')</script>";
 			header("Location: index.php");
 		} else {

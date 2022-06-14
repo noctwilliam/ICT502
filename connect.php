@@ -1,8 +1,15 @@
 <?php
-	$server = "localhost";
-	$username = "root";
-	$password = "";
-	$database = "ict502";
+	// php & Oracle DB connection file
 
-	$connect = mysqli_connect($server, $username, $password, $database);
+	$host = "localhost/XE";
+	$username = "BOOKSTORE";
+	$password = "system";
+	$database = "";
+
+	$connect = oci_connect($username, $password, $host);
+
+	if (!$connect) {
+		$e = oci_error();
+		trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+	}
 ?>
