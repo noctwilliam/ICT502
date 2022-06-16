@@ -28,7 +28,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col col-md-6">
-					<form action="addbook.php" method="POST">
+					<form action="" method="POST">
 						<div class="form-group my-4">
 							<label class="my-2" for="BOOK_ISBN">ISBN</label>
 							<input type="text" name="BOOK_ISBN" class="form-control" id="BOOK_ISBN" placeholder="Enter ISBN">
