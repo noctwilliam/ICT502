@@ -7,9 +7,11 @@
 		OR LOWER(BOOKS_AUTHOR) LIKE LOWER('%$search%')
 		OR LOWER(BOOKS_GENRE) LIKE LOWER('%$search%')
 		OR LOWER(BOOKS_EDITION) LIKE LOWER('%$search%')";
+
 		$result = oci_parse($connect, $sql);
 		oci_execute($result);
 		$count = oci_num_fields($result);
+
 		if ($count == FALSE) {
 			echo "<script>alert('No results found!')</script>";
 			header("Location: index.php");
