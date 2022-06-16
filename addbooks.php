@@ -2,13 +2,13 @@
 	require "connect.php";
 
 	if (isset($_POST['add'])) {
-		$BOOKS_ISBN = $_POST['BOOKS_ISBN'];
-		$BOOKS_TITLE = $_POST['BOOKS_TITLE'];
-		$BOOKS_AUTHOR = $_POST['BOOKS_AUTHOR'];
-		$BOOKS_GENRE = $_POST['BOOKS_GENRE'];
-		$BOOKS_EDITION = $_POST['BOOKS_EDITION'];
+		$BOOK_ISBN = $_POST['BOOK_ISBN'];
+		$BOOK_TITLE = $_POST['BOOK_TITLE'];
+		$BOOK_AUTHOR = $_POST['BOOK_AUTHOR'];
+		$BOOK_GENRE = $_POST['BOOK_GENRE'];
+		$BOOK_EDITION = $_POST['BOOK_EDITION'];
 
-		$sql = "INSERT INTO books (BOOKS_ISBN, BOOKS_TITLE, BOOKS_GENRE, BOOKS_AUTHOR, BOOKS_EDITION) VALUES ('$BOOKS_ISBN', '$BOOKS_TITLE', '$BOOKS_GENRE', '$BOOKS_AUTHOR', '$BOOKS_EDITION')";
+		$sql = "INSERT INTO book (BOOK_ISBN, BOOK_TITLE, BOOK_GENRE, BOOK_AUTHOR, BOOK_EDITION) VALUES ('$BOOK_ISBN', '$BOOK_TITLE', '$BOOK_GENRE', '$BOOK_AUTHOR', '$BOOK_EDITION')";
 
 		$result = oci_parse($connect, $sql);
 		oci_execute($result);
@@ -28,26 +28,26 @@
 		<div class="container">
 			<div class="row">
 				<div class="col col-md-6">
-					<form action="addbooks.php" method="POST">
+					<form action="addbook.php" method="POST">
 						<div class="form-group my-4">
-							<label class="my-2" for="BOOKS_ISBN">ISBN</label>
-							<input type="text" name="BOOKS_ISBN" class="form-control" id="BOOKS_ISBN" placeholder="Enter ISBN">
+							<label class="my-2" for="BOOK_ISBN">ISBN</label>
+							<input type="text" name="BOOK_ISBN" class="form-control" id="BOOK_ISBN" placeholder="Enter ISBN">
 						</div>
 						<div class="form-group my-4">
-							<label class="my-2" for="BOOKS_TITLE">Title</label>
-							<input type="text" name="BOOKS_TITLE" class="form-control" id="BOOKS_TITLE" placeholder="Enter Title">
+							<label class="my-2" for="BOOK_TITLE">Title</label>
+							<input type="text" name="BOOK_TITLE" class="form-control" id="BOOK_TITLE" placeholder="Enter Title">
 						</div>
 						<div class="form-group my-4">
-							<label class="my-2" for="BOOKS_AUTHOR">Author</label>
-							<input type="text" name="BOOKS_AUTHOR" class="form-control" id="BOOKS_AUTHOR" placeholder="Enter Author">
+							<label class="my-2" for="BOOK_AUTHOR">Author</label>
+							<input type="text" name="BOOK_AUTHOR" class="form-control" id="BOOK_AUTHOR" placeholder="Enter Author">
 						</div>
 						<div class="form-group my-4">
-							<label class="my-2" for="BOOKS_GENRE">Genre</label>
-							<input type="text" name="BOOKS_GENRE" class="form-control" id="BOOKS_GENRE" placeholder="Enter Genre">
+							<label class="my-2" for="BOOK_GENRE">Genre</label>
+							<input type="text" name="BOOK_GENRE" class="form-control" id="BOOK_GENRE" placeholder="Enter Genre">
 						</div>
 						<div class="form-group my-4">
-							<label class="my-2" for="BOOKS_EDITION">Edition</label>
-							<input type="text" name="BOOKS_EDITION" class="form-control" id="BOOKS_EDITION" placeholder="Enter Edition">
+							<label class="my-2" for="BOOK_EDITION">Edition</label>
+							<input type="text" name="BOOK_EDITION" class="form-control" id="BOOK_EDITION" placeholder="Enter Edition">
 						</div>
 						<button type="submit" name="add" class="btn btn-primary">Add</button>
 						<a href="index.php" class="btn btn-warning">Back</a>

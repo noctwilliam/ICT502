@@ -1,7 +1,7 @@
 <?php
 
 	require "connect.php";
-	$query = "SELECT * FROM BOOKS";
+	$query = "SELECT * FROM BOOK";
 	$result = oci_parse($connect, $query);
 	oci_execute($result);
 ?>
@@ -29,14 +29,14 @@
 				<tbody class="table-group-divider">
 					<?php while ($row = oci_fetch_array($result)) { ?>
 						<tr>
-							<td><?php echo $row['BOOKS_ISBN']; ?></td>
-							<td><?php echo $row['BOOKS_TITLE']; ?></td>
-							<td><?php echo $row['BOOKS_AUTHOR']; ?></td>
-							<td><?php echo $row['BOOKS_GENRE']; ?></td>
-							<td><?php echo $row['BOOKS_EDITION']; ?></td>
+							<td><?php echo $row['BOOK_ISBN']; ?></td>
+							<td><?php echo $row['BOOK_TITLE']; ?></td>
+							<td><?php echo $row['BOOK_AUTHOR']; ?></td>
+							<td><?php echo $row['BOOK_GENRE']; ?></td>
+							<td><?php echo $row['BOOK_EDITION']; ?></td>
 							<td>
-								<a class="btn btn-primary" href="edit.php?BOOKS_ISBN=<?php echo $row['BOOKS_ISBN']; ?>">Edit</a>
-								<a class="btn btn-danger" onclick="confirmDelete()" href="delete.php?BOOKS_ISBN=<?php echo $row['BOOKS_ISBN']; ?>">Delete</a>
+								<a class="btn btn-primary" href="edit.php?BOOK_ISBN=<?php echo $row['BOOK_ISBN']; ?>">Edit</a>
+								<a class="btn btn-danger" onclick="confirmDelete()" href="delete.php?BOOK_ISBN=<?php echo $row['BOOK_ISBN']; ?>">Delete</a>
 							</td>
 						</tr>
 					<?php } ?>
