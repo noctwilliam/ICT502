@@ -36,7 +36,7 @@
 							<td><?php echo $row['BOOK_EDITION']; ?></td>
 							<td>
 								<a class="btn btn-primary" href="edit.php?BOOK_ISBN=<?php echo $row['BOOK_ISBN']; ?>">Edit</a>
-								<a class="btn btn-danger" onclick="confirmDelete()" href="delete.php?BOOK_ISBN=<?php echo $row['BOOK_ISBN']; ?>">Delete</a>
+								<a class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this book?');" href="delete.php?BOOK_ISBN=<?php echo $row['BOOK_ISBN']; ?>">Delete</a>
 							</td>
 						</tr>
 					<?php } ?>
