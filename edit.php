@@ -8,14 +8,12 @@
 
 	if (isset($_POST['update'])) {
 
-		$VAR_ISBN = $_POST['BOOK_ISBN_input'];
 		$VAR_TITLE = $_POST['BOOK_TITLE_input'];
 		$VAR_GENRE = $_POST['BOOK_GENRE_input'];
 		$VAR_AUTHOR = $_POST['BOOK_AUTHOR_input'];
 		$VAR_EDITION = $_POST['BOOK_EDITION_input'];
 
 		$sql_update = "UPDATE BOOK SET
-			BOOK_ISBN = '$VAR_ISBN',
 			BOOK_TITLE = '$VAR_TITLE',
 			BOOK_GENRE = '$VAR_GENRE',
 			BOOK_AUTHOR = '$VAR_AUTHOR',
@@ -41,10 +39,6 @@
 			<div class="container my-5">
 				<div class="row">
 					<div class="col col-md-6">
-						<div class="form-group my-4">
-							<label for="BOOK_ISBN">ISBN</label>
-							<input type="text" class="form-control" name="BOOK_ISBN_input" value="<?php echo $row['BOOK_ISBN']; ?>">
-						</div>
 						<div class="form-group my-4">
 							<label for="BOOK_TITLE">Title</label>
 							<input type="text" class="form-control" name="BOOK_TITLE_input" value="<?php echo $row['BOOK_TITLE']; ?>">
