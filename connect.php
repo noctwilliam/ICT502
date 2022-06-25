@@ -2,8 +2,8 @@
 	// php & Oracle DB connection file
 
 	$host = "localhost/XE";
-	$username = "library";
-	$password = "library";
+	$username = "BOOKS";
+	$password = "nayli";
 	$database = "";
 
 	$connect = oci_connect($username, $password, $host);
