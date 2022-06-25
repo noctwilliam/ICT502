@@ -13,7 +13,7 @@
 
     $message="";
     if(count($_POST)>0) {
-        $con = mysqli_connect('localhost','root','','dbtshirt') or die('Unable To connect');
+        $con = mysqli_connect('localhost','root','','books') or die('Unable To connect');
         $result = mysqli_query($con,"SELECT * FROM LIBRARIAN WHERE LIBRARAN_ID='" . $_POST["LIBRARIAN_ID"] . "' and LIBRARIAN_PASS = '". $_POST["LIBRARIAN_PASS"]."'");
         $row  = mysqli_fetch_array($result);
         if(is_array($row)) {
