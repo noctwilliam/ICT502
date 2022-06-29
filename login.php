@@ -1,35 +1,35 @@
 <?php
-    session_start();
-	
-	
-	if(isset($_POST["remember"])) {
-		setcookie ("LIBRARIAN_ID",$_POST["LIBRARIAN_ID"],time()+ 3600);
-		setcookie ("LIBRARIAN_PASS",$_POST["LIBRARIAN_PASS"],time()+ 3600);
-		
-	} else {
-		setcookie("LIBRARIAN_ID","");
-		setcookie("LIBRARIAN_PASS","");
-	}
+        require "connect.php";
+        session_start();
+        // global $connect;
+        // $connect = oci_connect('books', 'localhost');
+        if(isset($_POST['submit'])){
+            $user = $_POST['username'];
+            $pass = $_POST['password'];
+            $result = oci_parse($connect, $sql);       
+            oci_execute($result);
+            $row = oci_fetch_all($result);
+            if($row){
+                    $_SESSION['user']=$user;
+                    $_SESSION['time_start_login'] = time();
+                    header("location: index.php");
+            }else{
 
-    $message="";
-    if(count($_POST)>0) {
-        $con = mysqli_connect('localhost','root','','books') or die('Unable To connect');
-        $result = mysqli_query($con,"SELECT * FROM LIBRARIAN WHERE LIBRARAN_ID='" . $_POST["LIBRARIAN_ID"] . "' and LIBRARIAN_PASS = '". $_POST["LIBRARIAN_PASS"]."'");
-        $row  = mysqli_fetch_array($result);
-        if(is_array($row)) {
-        $_SESSION["LIBRARIAN_ID"] = $row['LIBRARIAN_ID'];
-		$admin = $row['LIBRARIAN_ID'];
-        } else {
-         $message = "Invalid Librarian ID and Password!";
+                echo "wrong password or username";
+            }
         }
-    }
+
+
+
+     ?>
 
 <?php include 'header.php'; ?>
 
-<form align="center" method="POST" action="">
-<div class="message"><?php if($message!="") { echo $message; } ?></div>
 
-  <img src="library.jpeg" alt="Logo" width="445" height="250" align="center"><br>
+<form align="center" method="POST" action="">
+<!-- <div class="message"><?php if($message!="") { echo $message; } ?></div> -->
+
+  <img src="library.jpg" alt="Logo" width="445" height="250" align="center"><br>
   
   <label for="LIBRARIAN_ID" style="font-family: Verdana, Geneva, Tahoma, sans-serif ;">Librarian ID:</label><br>
   <input type="text" id="LIBRARIAN_ID" name="LIBRARIAN_ID" value="<?php if(isset($_COOKIE["LIBRARIAN_ID"])) { echo $_COOKIE["LIBRARIAN_ID"]; } ?>"><br>
@@ -51,11 +51,11 @@
           }
           </script>
   
-  <input type="submit" value="Log In">
+  <input type="submit" value="Log In" class="button but">
+  <a href = "addbooks.php" class="button but">
   <input type="reset" value="Reset"><br>
   <input type="checkbox" name="remember" id="LIBRARIAN_ID"> Remember Password? 
   
 </form> <br> <br>
 
 <?php include 'footer.php'; ?>
-?>
