@@ -20,9 +20,14 @@
         <a class="nav-link" href="index.php">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
+        <a class="nav-link" href="#">View User</a>
 	</li>
+	<li class="nav-item">
+        <a class="nav-link" href="#">Borrowed Books</a>
+	</li><li class="nav-item">
+        <a class="nav-link" href="#">Report</a>
 	</li>
+	
       <li class="nav-item">
         <a class="nav-link" href="login.php">Log Out</a>
 	</li>
