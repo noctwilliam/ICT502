@@ -47,4 +47,6 @@
 			<a href="addbooks.php" class="btn btn-primary position-absolute top-50 start-50 translate-middle">Add Books</a>
 		</div>
 	</section>
+					
+
 <?php include 'footer.php'; ?>
