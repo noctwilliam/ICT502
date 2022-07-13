@@ -8,7 +8,6 @@
 
 	<section id="table">
 		<div class="container">
-		
 			<div class="align-center my-5">
 				<form class="row" action="searchbooks.php" method="POST">
 					<div class="col-auto"><input type="text" class="form-control" id="search" name="searchvalue" placeholder="Search"></div>
