@@ -1,7 +1,7 @@
 <?php
 	require "connect.php";
-	$BOOK_ID = $_GET["BOOK_ID"];
-	$query = "DELETE FROM BORROWED WHERE BOOK_ID = '$BOOK_ID'";
+	$BOOK_ISBN = $_GET["BOOK_ISBN"];
+	$query = "DELETE FROM BORROWED WHERE BOOK_ISBN = '$BOOK_ISBN'";
 	$execute = oci_parse($connect, $query);
 	oci_execute($execute);
 
