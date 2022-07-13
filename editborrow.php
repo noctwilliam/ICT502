@@ -1,14 +1,13 @@
 <?php
 	require "connect.php";
-	$BOOK_ID = $_GET['BOOK_ID'];
-	$sql_book = "SELECT * FROM BORROWED WHERE BOOK_ID = '$BOOK_ID'";
+	$BOOK_ISBN = $_GET['BOOK_ISBN'];
+	$sql_book = "SELECT * FROM BORROWED WHERE BOOK_ISBN = '$BOOK_ISBN'";
 	$result_book = oci_parse($connect, $sql_book);
 	oci_execute($result_book);
 	$row = oci_fetch_array($result_book);
     
 
 	if (isset($_POST['update'])) {
-
 		$VAR_USER = $_POST['USER_ID_input'];
 		$VAR_LIBRARIAN = $_POST['LIBRARIAN_ID_input'];
 		$VAR_RESERVE = $_POST['RESERVE_DATE_input'];
@@ -32,9 +31,7 @@
 			echo "<script>alert('Failed to Update!')</script>";
 			header("Location: borrow.php");
 		}
-
 	}
-   
 ?>
 
 <?php include 'header.php'; ?>
@@ -43,13 +40,29 @@
 			<div class="container my-5">
 				<div class="row">
 					<div class="col col-md-6">
-                    <div class="form-group my-4">
-							<label for="USER_ID">ID USER</label>
-							<input type="text" class="form-control" name="USER_ID_input" value="<?php echo $row['USER_ID']; ?>">
+						<div class="form-group my-4">
+							<label class="my-2" for="USER_ID">USER</label>
+							<select name="USER_ID" class="form-control">
+								<?php 
+									$user_id_sql = "SELECT * FROM USERS";
+									$user_id_result = oci_parse($connect, $user_id_sql);
+									oci_execute($user_id_result);
+									while ($row_user_id = oci_fetch_array($user_id_result)) { ?>
+										<option value="<?php echo $row_user_id['USER_ID'];?>"><?php echo $row_user_id['USER_NAME']; ?></option>
+									<?php } ?>
+							</select>
 						</div>
 						<div class="form-group my-4">
-							<label for="LIBRARIAN_ID">ID LIBRARIAN</label>
-							<input type="text" class="form-control" name="LIBRARIAN_ID_input" value="<?php echo $row['LIBRARIAN_ID']; ?>">
+							<label class="my-2" for="LIBRARIAN_ID">LIBRARIAN</label>
+							<select name="BOOK_ISBN" id="BOOK ISBN" class="form-control">
+								<?php 
+									$librarian_id_sql = "SELECT * FROM LIBRARIAN";
+									$librarian_id_result = oci_parse($connect, $librarian_id_sql);
+									oci_execute($librarian_id_result);
+									while ($row_librarian_id = oci_fetch_array($librarian_id_result)) { ?>
+										<option value="<?php echo $row_librarian_id['LIBRARIAN_ID'];?>"><?php echo $row_librarian_id['LIBRARIAN_NAME']; ?></option>
+									<?php } ?>
+							</select>
 						</div>
 						<div class="form-group my-4">
 							<label for="RESERVE_DATE">RESERVE DATE</label>
