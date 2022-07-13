@@ -1,19 +1,18 @@
 <?php
-
+	include "header.php";
 	require "connect.php";
-	$query = "SELECT * FROM BORROWED";
+	$query = "SELECT * FROM REPORTS";
 	$result = oci_parse($connect, $query);
 	oci_execute($result);
 ?>
 
 <?php
 if (isset($_POST['add'])) {
-    $REPORT_ID = $_POST['REPORT_ID'];
     $BOOK_ISBN = $_POST['BOOK_ISBN'];
     $USER_ID = $_POST['USER_ID'];
     $ISSUE_RETURN = $_POST['ISSUE_RETURN'];
 
-    $sql = "INSERT INTO REPORTS (REPORT_ID, BOOK_ISBN, USER_ID, ISSUE_RETURN) VALUES ('$REPORT_ID', '$BOOK_ISBN', '$USER_ID', '$ISSUE_RETURN')";
+    $sql = "INSERT INTO REPORTS (BOOK_ISBN, USER_ID, ISSUE_RETURN) VALUES ('$BOOK_ISBN', '$USER_ID', '$ISSUE_RETURN')";
 
     $result = oci_parse($connect, $sql);
     oci_execute($result);
