@@ -1,12 +1,6 @@
 <?php
-	include "header.php";
-	require "connect.php";
-	$query = "SELECT * FROM REPORTS";
-	$result = oci_parse($connect, $query);
-	oci_execute($result);
-?>
-
-<?php
+include "header.php";
+require "connect.php";
 if (isset($_POST['add'])) {
     $BOOK_ISBN = $_POST['BOOK_ISBN'];
     $USER_ID = $_POST['USER_ID'];
@@ -26,74 +20,28 @@ if (isset($_POST['add'])) {
     }
 }
 ?>
-
-<?php include "header.php"; ?>
-	<section id="table">
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#"></a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-	</li>
-	</li>
-      <li class="nav-item">
-        <a class="nav-link" href="login.php">Log Out</a>
-	</li>
-    </ul>
-  </div>
-</nav>
-		<div class="container">
-			<table class="table table-striped">
-			<div style="text-align: center">
-            <p><b>DETAILS OF BORROWER</b></p>
-            </div>
-				<thead>
-					<tr>
-						<th>BOOK_ISBN</th>
-						<th>USER_ID</th>
-                        <th>RETURN_DATE</td>
-                        <th>DUE DATE</th>
-					</tr>
-				</thead>
-				<tbody class="table-group-divider">
-					<?php while ($row = oci_fetch_array($result)) { ?>
-						<tr>
-							<td><?php echo $row['BOOK_ISBN']; ?></td>
-							<td><?php echo $row['USER_ID']; ?></td>
-                            <td><?php echo $row['RETURN_DATE']; ?></td>
-                            <td><?php echo $row['DUE_DATE']; ?></td>
-						</tr>
-					<?php } ?>
-				</tbody>
-			</table>
-		</div>
-	</section>
-    <hr>
     <div class="container">
 			<div class="row">
 				<div class="col col-md-6">
 					<form action="" method="POST">
                     <p><b>SUBMIT NEW ISSUE</b></p>
 						<div class="form-group my-4">
-							<label class="my-2" for="REPORT_ID">REPORT ID</label>
-							<input type="text" name="REPORT_ID" class="form-control" id="REPORT_ID" placeholder="Enter REPORT ID *REPXX*">
+							<label for="BOOK_ISBN" class="my-2">BOOK ISBN</label>
+							<select class="form-select" aria-label="Default select example">
+								<?php
+								$books_query = "SELECT * FROM BOOK";
+								$books_result = oci_parse($connect, $books_query);
+								oci_execute($books_result);
+								while ($data = oci_fetch_array($books_result)) { ?>
+									<option value="<?php echo $data['BOOK_ISBN']; ?>"><?php echo $data['BOOK_ISBN']; ?></option>
+								<?php } ?>
+							</select>
 						</div>
 						<div class="form-group my-4">
-							<label class="my-2" for="BOOK_ISBN">BOOK ISBN</label>
-							<input type="text" name="BOOK_ISBN" class="form-control" id="BOOK_ISBN" placeholder="Enter ISBN">
-						</div>
-						<div class="form-group my-4">
-							<label class="my-2" for="USER_ID">USER_ID</label>
+							<label class="my-2" for="USER_ID">USER ID</label>
 							<input type="text" name="USER_ID" class="form-control" id="USER_ID" placeholder="Enter USER ID">
-						</div>
+						</div> 
+						<!-- later to amend user id to select from database -->
 						<div class="form-group my-4">
 							<label class="my-2" for="ISSUE_RETURN">ISSUE RETURN</label>
 							<input type="text" name="ISSUE_RETURN" class="form-control" id="ISSUE_RETURN" placeholder="Enter ISSUE">
