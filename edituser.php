@@ -33,7 +33,7 @@
 	}
 ?>
 
-<?php include 'headeruser.php'; ?>
+<?php include 'header.php'; ?>
 
 <div class="main">
 	<section class="signup">
