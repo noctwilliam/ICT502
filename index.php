@@ -1,20 +1,20 @@
 <?php
-
-	require "connect.php";
+	include "header.php";
+	if (isset($_SESSION['LIBRARIAN_PASS'])) {
 	$query = "SELECT * FROM BOOK";
 	$result = oci_parse($connect, $query);
 	oci_execute($result);
 ?>
 
-<?php include "header.php"; ?>
 	<section id="table">
 		<div class="container">
-		<div class="align-center my-5">
-			<form class="row" action="searchbooks.php" method="POST">
-				<div class="col-auto"><input type="text" class="form-control" id="search" name="searchvalue" placeholder="Search"></div>
-				<div class="col-auto"><button type="submit" name="search" class="btn btn-primary">Search</button></div>
-			</form>
-		</div>
+		
+			<div class="align-center my-5">
+				<form class="row" action="searchbooks.php" method="POST">
+					<div class="col-auto"><input type="text" class="form-control" id="search" name="searchvalue" placeholder="Search"></div>
+					<div class="col-auto"><button type="submit" name="search" class="btn btn-primary">Search</button></div>
+				</form>
+			</div>
 			<table class="table table-striped">
 				<thead>
 					<tr>
@@ -47,4 +47,10 @@
 			<a href="addbooks.php" class="btn btn-primary position-absolute top-50 start-50 translate-middle">Add Books</a>
 		</div>
 	</section>
-<?php include 'footer.php'; ?>
+<?php 
+	} else {
+		header("Location: login.php");
+		exit();
+	}
+include 'footer.php'; 
+?>
