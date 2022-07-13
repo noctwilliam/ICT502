@@ -2,14 +2,14 @@
 	require "connect.php";
 
 	if (isset($_POST['add'])) {
-		$BOOK_ID = $_POST['BOOK_ID'];
+		$BOOK_ISBN = $_POST['BOOK_ISBN'];
 		$USER_ID = $_POST['USER_ID'];
 		$LIBRARIAN_ID = $_POST['LIBRARIAN_ID'];
 		$RESERVE_DATE = $_POST['RESERVE_DATE'];
 		$RETURN_DATE = $_POST['RETURN_DATE'];
 		$DUE_DATE = $_POST['DUE_DATE'];
 
-		$sql =  "INSERT INTO BORROWED(BOOK_ID, USER_ID, LIBRARIAN_ID, RESERVE_DATE, RETURN_DATE, DUE_DATE) VALUES ('$BOOK_ID', '$USER_ID', '$LIBRARIAN_ID', TO_DATE('$RESERVE_DATE','YYYY-MM-DD'), TO_DATE('$RETURN_DATE','YYYY-MM-DD'), TO_DATE('$DUE_DATE','YYYY-MM-DD'))";
+		$sql = "INSERT INTO BORROWED (BOOK_ISBN, USER_ID, LIBRARIAN_ID, RESERVE_DATE, RETURN_DATE, DUE_DATE) VALUES ('$BOOK_ISBN', '$USER_ID', '$LIBRARIAN_ID', TO_DATE('$RESERVE_DATE','YYYY-MM-DD'), TO_DATE('$RETURN_DATE','YYYY-MM-DD'), TO_DATE('$DUE_DATE','YYYY-MM-DD'))";
 
 		$result = oci_parse($connect, $sql);
 		oci_execute($result);
@@ -30,30 +30,54 @@
 			<div class="row">
 				<div class="col col-md-6">
 					<form action="" method="POST">
-                    <div class="form-group my-4">
-							<label class="my-2" for="BOOK_ID">BOOK</label>
-							<input type="text" name="BOOK_ID" class="form-control" id="BOOK_ID" placeholder="Enter Book ID">
+						<div class="form-group my-4">
+							<label class="my-2" for="BOOK ISBN">BOOK NAME</label>
+							<select name="BOOK_ISBN" id="BOOK_ISBN" class="form-control">
+								<?php
+									$book_sql = "SELECT * FROM BOOK";
+									$book_result = oci_parse($connect, $book_sql);
+									oci_execute($book_result);
+									while ($row_book = oci_fetch_array($book_result)) { ?>
+										<option value="<?php echo $row_book['BOOK_ISBN']; ?>" ><?php echo $row_book['BOOK_TITLE']; ?></option>
+									<?php } ?>
+							</select>
 						</div>
 						<div class="form-group my-4">
-							<label class="my-2" for="USER_ID">USER</label>
-							<input type="text" name="USER_ID" class="form-control" id="USER_ID" placeholder="Enter User ID">
+							<label class="my-2" for="USER_ID">USER NAME</label>
+							<select name="USER_ID" class="form-control">
+								<?php
+									$user_id_sql = "SELECT * FROM USERS";
+									$user_id_result = oci_parse($connect, $user_id_sql);
+									oci_execute($user_id_result);
+									while ($row_user_id = oci_fetch_array($user_id_result)) { ?>
+										<option value="<?php echo $row_user_id['USER_ID'];?>" ><?php echo $row_user_id['USER_NAME']; ?></option>
+									<?php } ?>
+							</select>
 						</div>
 						<div class="form-group my-4">
-							<label class="my-2" for="LIBRARIAN_ID">LIBRARIAN</label>
-							<input type="text" name="LIBRARIAN_ID" class="form-control" id="LIBRARIAN_ID" placeholder="Enter Librarian ID">
+							<label class="my-2" for="LIBRARIAN_ID">LIBRARIAN NAME</label>
+							<select name="LIBRARIAN_ID" class="form-control">
+								<?php
+									$librarian_id_sql = "SELECT * FROM LIBRARIAN";
+									$librarian_id_result = oci_parse($connect, $librarian_id_sql);
+									oci_execute($librarian_id_result);
+									while ($row_librarian_id = oci_fetch_array($librarian_id_result)) { ?>
+										<option value="<?php echo $row_librarian_id['LIBRARIAN_ID'];?>" ><?php echo $row_librarian_id['LIBRARIAN_NAME']; ?></option>
+									<?php } ?>
+							</select>
 						</div>
 						<div class="form-group my-4">
-                    		<label class="my-2" for="RESERVE_DATE">RESERVE</label>
-                    		<input type="date" name="RESERVE_DATE" class="form-control" id="RESERVE_DATE">
-                		</div>
+							<label class="my-2" for="RESERVE_DATE">RESERVE DATE</label>
+							<input type="date" name="RESERVE_DATE" class="form-control" id="RESERVE_DATE">
+						</div>
 						<div class="form-group my-4">
-                    		<label class="my-2" for="RETURN_DATE">RETURN</label>
-                    		<input type="date" name="RETURN_DATE" class="form-control" id="RETURN_DATE">
-                		</div>
+							<label class="my-2" for="RETURN_DATE">RETURN DATE</label>
+							<input type="date" name="RETURN_DATE" class="form-control" id="RETURN_DATE">
+						</div>
 						<div class="form-group my-4">
-                    		<label class="my-2" for="DUE_DATE">DUEDATE</label>
-                    		<input type="date" name="DUE_DATE" class="form-control" id="DUE_DATE">
-                		</div>
+							<label class="my-2" for="DUE_DATE">DUE DATE</label>
+							<input type="date" name="DUE_DATE" class="form-control" id="DUE_DATE">
+						</div>
 						<button type="submit" name="add" class="btn btn-primary">Add</button>
 						<a href="borrow.php" class="btn btn-warning">Back</a>
 					</form>
