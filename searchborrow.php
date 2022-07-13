@@ -2,7 +2,7 @@
 	require "connect.php";
 	if (isset($_POST['search'])) {
 		$search = $_POST['searchvalue'];
-		$sql = "SELECT * FROM BORROWED WHERE LOWER(BOOK_ID) LIKE LOWER('%$search%')
+		$sql = "SELECT * FROM BORROWED WHERE LOWER(BOOK_ISBN) LIKE LOWER('%$search%')
 		OR LOWER(USER_ID) LIKE LOWER('%$search%')
 		OR LOWER(LIBRARIAN_ID) LIKE LOWER('%$search%')
 		OR LOWER(RESERVE_DATE) LIKE LOWER('%$search%')
@@ -38,15 +38,15 @@
 				<tbody class="table-group-divider">
 					<?php while ($row = oci_fetch_array($result)) { ?>
 						<tr>
-                            <td><?php echo $row['BOOK_ID']; ?></td>
+                            <td><?php echo $row['BOOK_ISBN']; ?></td>
 							<td><?php echo $row['USER_ID']; ?></td>
 							<td><?php echo $row['LIBRARIAN_ID']; ?></td>
 							<td><?php echo $row['RESERVE_DATE']; ?></td>
 							<td><?php echo $row['RETURN_DATE']; ?></td>
 							<td><?php echo $row['DUE_DATE']; ?></td>
 							<td>
-								<a class="btn btn-primary" href="editborrow.php?BOOK_ID=<?php echo $row['BOOK_ID']; ?>">Edit</a>
-								<a class="btn btn-danger" onclick="confirmDelete()" href="deleteborrow.php?BOOK_ID=<?php echo $row['BOOK_ID']; ?>">Delete</a>
+								<a class="btn btn-primary" href="editborrow.php?BOOK_ISBN=<?php echo $row['BOOK_ISBN']; ?>">Edit</a>
+								<a class="btn btn-danger" onclick="confirmDelete()" href="deleteborrow.php?BOOK_ISBN=<?php echo $row['BOOK_ISBN']; ?>">Delete</a>
 							</td>
 						</tr>
 					<?php } ?>
