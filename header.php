@@ -1,4 +1,15 @@
-<?php include "connect.php"; ?>
+<?php
+	include "connect.php";
+	session_start();
+
+	function active($current_page) {
+		$url_array =  explode('/', $_SERVER['REQUEST_URI']);
+		$url = end($url_array);
+		if ($current_page == $url) {
+			echo 'active';
+		}
+	}
+?>
 
 <!-- This is the header -->
 <!DOCTYPE html>
@@ -13,10 +24,28 @@
 	<link rel="stylesheet" href="css/styles.css">
 	<!-- Font Icon -->
 	<link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
-
 	<!-- Main css -->
 	<link rel="stylesheet" href="css/style.css">
 	<title>Book Library System</title>
 </head>
 
 <body>
+	<div class="container">
+		<nav class="navbar navbar-expand-lg">
+			<div class="container-fluid">
+				<a class="navbar-brand" href="#">Admin Dashboard</a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+					<div class="navbar-nav">
+						<?php if (!empty($_SESSION['LIBRARIAN_PASS'])) { ?>
+							<a class="nav-link <?php active('index.php') ?>" aria-current="page" href="index.php">Books</a>
+							<a class="nav-link" href="">Users</a>
+							<a class="nav-link" href="logout.php">Logout</a>
+						<?php } ?>
+					</div>
+				</div>
+			</div>
+		</nav>
+	</div>
