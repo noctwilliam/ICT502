@@ -1,0 +1,82 @@
+.signup {
+    margin-bottom: 150px;
+}
+
+.signup-content {
+    @extend display-flex;
+    padding: 75px 0;
+    // flex-flow: wrap;
+}
+.signup-form, .signup-image, .signin-form, .signin-image{
+    width: 50%;
+    overflow: hidden;
+}
+.signup-image {
+    margin: 0 55px;
+}
+.form-title {
+    margin-bottom: 33px;
+}
+.signup-image {
+    margin-top: 45px;
+}
+figure {
+    margin-bottom: 50px;
+    text-align: center;
+}
+.form-submit {
+    display: inline-block;
+    background: $blue-color;
+    color: #fff;
+    border-bottom: none;
+    width: auto;
+    padding: 15px 39px;
+    @include border-radius(5px);
+    margin-top: 25px;
+    cursor: pointer;
+    &:hover {
+        background: darken($blue-color, 10%);
+    }
+}
+
+
+.signup-image-link {
+    font-size: 14px;
+    color: $black-color;
+    display: block;
+    text-align: center;
+}
+
+
+.signup-form {
+    margin-left: 75px;
+    margin-right: 75px;
+    padding-left: 34px;
+}
+.register-form {
+    width: 100%;
+}
+.form-group {
+    position: relative;
+    margin-bottom: 25px;
+    overflow: hidden;
+    &:last-child {
+        margin-bottom: 0px;
+    }
+}
+
+input {
+    width: 100%;
+    display: block;
+    border: none;
+    border-bottom: 1px solid $grey-light;
+    padding: 6px 30px;
+    font-family: Poppins;
+    box-sizing: border-box;
+    @include input-placeholder($grey-light);
+    &:focus {
+        border-bottom: 1px solid $black-color;
+        @include input-placeholder($black-color);
+    }
+}
+
