@@ -41,7 +41,9 @@
 					<div class="navbar-nav">
 						<?php if (!empty($_SESSION['LIBRARIAN_PASS'])) { ?>
 							<a class="nav-link <?php active('index.php') ?>" aria-current="page" href="index.php">Books</a>
-							<a class="nav-link" href="">Users</a>
+							<a class="nav-link <?php active('indexuser.php') ?>" aria-current="page" href="indexuser.php">Users</a>
+							<a class="nav-link <?php active('borrow.php') ?>" aria-current="page" href="borrow.php" >Borrowed</a>
+							<a class="nav-link <?php active('viewReports.php') ?>" aria-current="page" href="viewReports.php" >Reports</a>
 							<a class="nav-link" href="logout.php">Logout</a>
 						<?php } ?>
 					</div>
