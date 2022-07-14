@@ -1,9 +1,9 @@
 <?php
 	include "header.php";
-	if (isset($_SESSION['LIBRARIAN_PASS'])) {
-	$query = "SELECT * FROM BOOK";
-	$result = oci_parse($connect, $query);
-	oci_execute($result);
+	// if (isset($_SESSION['LIBRARIAN_PASS'])) {
+		// $query = "SELECT * FROM BOOK";
+		// $result = oci_parse($connect, $query);
+		// oci_execute($result);
 ?>
 
 	<section id="table">
@@ -47,10 +47,9 @@
 		</div>
 	</section>
 
-<?php 
-	} else {
-		header("Location: login.php");
-		exit();
-	}
-include 'footer.php'; 
+<?php
+	// } else {
+	// 	header("Location: login.php");
+	// }
+	include "footer.php";
 ?>
