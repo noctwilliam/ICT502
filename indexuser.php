@@ -8,7 +8,10 @@
 
 <?php include "header.php"; ?>
 
-
+<!-- Font Icon -->
+	<link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
+	<!-- Main css -->
+	<link rel="stylesheet" href="css/style.css">
 <section id="table">
 	<div class="container">
 	<div class="align-center my-5">

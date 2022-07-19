@@ -1,3 +1,6 @@
+.form-title {
+    margin-bottom: 40px;
+}
 /* @extend display-flex; */
 display-flex, .display-flex, .display-flex-center, .signup-content, .signin-content, .social-login, .socials {
   display: flex;
