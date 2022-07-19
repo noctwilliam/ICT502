@@ -20,10 +20,7 @@
 ?>
 
 <?php include 'header.php'; ?>
-<!-- Font Icon -->
-	<link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
-	<!-- Main css -->
-	<link rel="stylesheet" href="css/style.css">
+
 	<section id="searchtable">
 		<div class="container">
 			<table class="table table-striped">
