@@ -18,8 +18,7 @@
 				<thead>
 					<tr>
 						<th>BOOK ISBN</th>
-                        <th>USER ID</th>
-
+						<th>USER ID</th>
 						<th>LIBRARIAN ID</th>
 						<th>RESERVE</th>
 						<th>RETURN</th>

@@ -37,7 +37,7 @@ if (isset($_POST['loginProcess'])) {
 <form align="center" method="POST">
 
 	<br>
-	<img src="img/library.jpg" alt="Logo" width="445" height="250">
+	<img src="images/library.jpg" alt="Logo" width="445" height="250">
 	<br>
 	<input type="text" name="librarian_name" placeholder="Librarian Name"><br /><br />
 	<input type="password" name="password" id="librarian-password" placeholder="Password"><br>
