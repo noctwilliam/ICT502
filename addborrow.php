@@ -25,13 +25,15 @@
 ?>
 
 <?php include 'header.php'; ?>
-	<section>
+<div class="main">
+	<section class="signup">
 		<div class="container">
-			<div class="row">
-				<div class="col col-md-6">
-					<form action="" method="POST">
-						<div class="form-group my-4">
-							<label class="my-2" for="BOOK ISBN">BOOK NAME</label>
+			<div class="signup-content">
+				<div class="signup-form">
+					<h2 class="form-title">Add Borrower</h2>
+					<form method="POST" class="register-form" id="register-form">
+						<div class="form-group">
+							<label for="BOOK ISBN" ></label>
 							<select name="BOOK_ISBN" id="BOOK_ISBN" class="form-control">
 								<?php
 									$book_sql = "SELECT * FROM BOOK";
@@ -43,7 +45,7 @@
 							</select>
 						</div>
 						<div class="form-group my-4">
-							<label class="my-2" for="USER_ID">USER NAME</label>
+							<label for="USER_ID"></label>
 							<select name="USER_ID" class="form-control">
 								<?php
 									$user_id_sql = "SELECT * FROM USERS";
@@ -55,7 +57,7 @@
 							</select>
 						</div>
 						<div class="form-group my-4">
-							<label class="my-2" for="LIBRARIAN_ID">LIBRARIAN NAME</label>
+							<label for="LIBRARIAN_ID"></label>
 							<select name="LIBRARIAN_ID" class="form-control">
 								<?php
 									$librarian_id_sql = "SELECT * FROM LIBRARIAN";
@@ -67,22 +69,26 @@
 							</select>
 						</div>
 						<div class="form-group my-4">
-							<label class="my-2" for="RESERVE_DATE">RESERVE DATE</label>
+							<label  for="RESERVE_DATE"></label>
 							<input type="date" name="RESERVE_DATE" class="form-control" id="RESERVE_DATE">
 						</div>
 						<div class="form-group my-4">
-							<label class="my-2" for="RETURN_DATE">RETURN DATE</label>
+							<label  for="RETURN_DATE"></label>
 							<input type="date" name="RETURN_DATE" class="form-control" id="RETURN_DATE">
 						</div>
 						<div class="form-group my-4">
-							<label class="my-2" for="DUE_DATE">DUE DATE</label>
+							<label for="DUE_DATE"></label>
 							<input type="date" name="DUE_DATE" class="form-control" id="DUE_DATE">
 						</div>
 						<button type="submit" name="add" class="btn btn-primary">Add</button>
 						<a href="borrow.php" class="btn btn-warning">Back</a>
 					</form>
 				</div>
+				<div class="signup-image">
+					<figure><img src="images/signup-image.jpg" alt="sing up image"></figure>
+				</div>
 			</div>
 		</div>
 	</section>
+									</div>
 <?php include 'footer.php'; ?>

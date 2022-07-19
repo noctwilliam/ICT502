@@ -20,13 +20,16 @@ if (isset($_POST['add'])) {
     }
 }
 ?>
-    <div class="container">
-			<div class="row">
-				<div class="col col-md-6">
-					<form action="" method="POST">
-                    <p><b>SUBMIT NEW ISSUE</b></p>
-						<div class="form-group my-4">
-							<label for="BOOK_ISBN" class="my-2">BOOK ISBN</label>
+    <div class="main">
+	<section class="signup">
+		<div class="container">
+			<div class="signup-content">
+				<div class="signup-form">
+					<h2 class="form-title">Add Issue</h2>
+					<form method="POST" class="register-form" id="register-form">
+						<div class="form-group">
+							<label for="BOOK_ISBN"></label>
+							
 							<select class="form-select" aria-label="Default select example">
 								<?php
 								$books_query = "SELECT * FROM BOOK";
@@ -37,19 +40,26 @@ if (isset($_POST['add'])) {
 								<?php } ?>
 							</select>
 						</div>
-						<div class="form-group my-4">
-							<label class="my-2" for="USER_ID">USER ID</label>
+						<div class="form-group">
+							<label for="USER_ID"></label>
 							<input type="text" name="USER_ID" class="form-control" id="USER_ID" placeholder="Enter USER ID">
 						</div> 
 						<!-- later to amend user id to select from database -->
-						<div class="form-group my-4">
-							<label class="my-2" for="ISSUE_RETURN">ISSUE RETURN</label>
+						<div class="form-group">
+							<label for="ISSUE_RETURN"></label>
 							<input type="text" name="ISSUE_RETURN" class="form-control" id="ISSUE_RETURN" placeholder="Enter ISSUE">
 						</div>
+						<div class="form-group my-4">
 						<button type="submit" name="add" class="btn btn-primary">Submit</button>
 						<a href="viewReports.php" class="btn btn-warning">Back</a>
+						</div>
 					</form>
+				</div>
+				<div class="signup-image">
+					<figure><img src="images/signup-image.jpg" alt="sing up image"></figure>
 				</div>
 			</div>
 		</div>
+	</section>
+</div>
 <?php include 'footer.php'; ?>
