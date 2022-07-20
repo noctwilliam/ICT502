@@ -28,6 +28,7 @@ if (isset($_POST['add'])) {
 					<h2 class="form-title">Add Issue</h2>
 					<form method="POST" class="register-form" id="register-form">
 						<div class="form-group">
+							<p class="my-2">BOOK TITLE</p>
 							<label for="BOOK_ISBN"></label>
 							
 							<select class="form-select" aria-label="Default select example">
@@ -36,15 +37,23 @@ if (isset($_POST['add'])) {
 								$books_result = oci_parse($connect, $books_query);
 								oci_execute($books_result);
 								while ($data = oci_fetch_array($books_result)) { ?>
-									<option value="<?php echo $data['BOOK_ISBN']; ?>"><?php echo $data['BOOK_ISBN']; ?></option>
+									<option value="<?php echo $data['BOOK_ISBN']; ?>"><?php echo $data['BOOK_TITLE']; ?></option>
 								<?php } ?>
 							</select>
 						</div>
 						<div class="form-group">
+							<p>USER NAME</p>
 							<label for="USER_ID"></label>
-							<input type="text" name="USER_ID" class="form-control" id="USER_ID" placeholder="Enter USER ID">
-						</div> 
-						<!-- later to amend user id to select from database -->
+							<select class="form-select">
+								<?php
+								$users_query = "SELECT * FROM USERS";
+								$users_result = oci_parse($connect, $users_query);
+								oci_execute($users_result);
+								while ($data = oci_fetch_array($users_result)) { ?>
+									<option value="<?php echo $data['USER_ID']; ?>"><?php echo $data['USER_NAME']; ?></option>
+								<?php } ?>
+							</select>
+						</div>
 						<div class="form-group">
 							<label for="ISSUE_RETURN"></label>
 							<input type="text" name="ISSUE_RETURN" class="form-control" id="ISSUE_RETURN" placeholder="Enter ISSUE">
