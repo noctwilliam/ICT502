@@ -35,13 +35,17 @@
 ?>
 
 <?php include 'header.php'; ?>
-	<section class="edit">
-		<form action="" method="POST">
-			<div class="container my-5">
-				<div class="row">
-					<div class="col col-md-6">
-						<div class="form-group my-4">
-							<label class="my-2" for="USER_ID">USER</label>
+<div class="main">
+	<section class="signup">
+	<div class="container">
+	<div class="signup-content">
+	<div class="signup-form">
+	<h2 class="form-title">Edit Borrower</h2>
+		<form action="" method="POST" class="register-form" id="register-form">
+			
+		
+						<div class="form-group">
+							<label for="USER_ID"></label>
 							<select name="USER_ID" class="form-control">
 								<?php 
 									$user_id_sql = "SELECT * FROM USERS";
@@ -52,8 +56,8 @@
 									<?php } ?>
 							</select>
 						</div>
-						<div class="form-group my-4">
-							<label class="my-2" for="LIBRARIAN_ID">LIBRARIAN</label>
+						<div class="form-group">
+							<label for="LIBRARIAN_ID"></label>
 							<select name="BOOK_ISBN" id="BOOK ISBN" class="form-control">
 								<?php 
 									$librarian_id_sql = "SELECT * FROM LIBRARIAN";
@@ -64,25 +68,29 @@
 									<?php } ?>
 							</select>
 						</div>
-						<div class="form-group my-4">
-							<label for="RESERVE_DATE">RESERVE DATE</label>
+						<div class="form-group">
+							<label for="RESERVE_DATE"></label>
 							<input type="date" class="form-control" name="RESERVE_DATE_input" value="<?php echo $row['RESERVE_DATE']; ?>">
 						</div>
-						<div class="form-group my-4">
-							<label for="RETURN_DATE">RETURN DATE</label>
+						<div class="form-group">
+							<label for="RETURN_DATE"></label>
 							<input type="date" class="form-control" name="RETURN_DATE_input" value="<?php echo $row['RETURN_DATE']; ?>">
 						</div>
-						<div class="form-group my-4">
-							<label for="DUE_DATE">DUEDATE</label>
+						<div class="form-group">
+							<label for="DUE_DATE"></label>
 							<input type="date" class="form-control" name="DUE_DATE_input" value="<?php echo $row['DUE_DATE']; ?>">
 						</div>
-						<div class="form-group my-4">
+						<div class="form-group">
 							<input type="submit" class="btn btn-primary" name="update" value="Update">
 							<a href="borrow.php" class="btn btn-danger">Cancel</a>
 						</div>
-					</div>
-				</div>
-			</div>
 		</form>
+		</div>
+		<div class="signup-image">
+					<figure><img src="images/signup-image.jpg" alt="sing up image"></figure>
+				</div>
+	    </div>
+	  </div>
 	</section>
+</div>
 <?php include 'footer.php'; ?>

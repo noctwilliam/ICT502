@@ -23,32 +23,40 @@
 ?>
 
 <?php include 'header.php'; ?>
-	<section>
+<div class="main">
+	<section class="signup">
 		<div class="container">
-			<div class="row">
-				<div class="col col-md-6">
-					<form action="" method="POST">
-						<div class="form-group my-4">
-							<label class="my-2" for="BOOK_TITLE">Title</label>
-							<input type="text" name="BOOK_TITLE" class="form-control" id="BOOK_TITLE" placeholder="Enter Title">
+			<div class="signup-content">
+				<div class="signup-form">
+					<h2 class="form-title">Add Book</h2>
+					<form method="POST" class="register-form" id="register-form">
+						<div class="form-group">
+							<label for="title"><i class="zmdi zmdi-book"></i></label>
+							<input type="title" name="BOOK_TITLE" id="BOOK_TITLE"  placeholder="Title" />
+						</div>
+						<div class="form-group">
+							<label for="author"><i class="zmdi zmdi-account material-icons-name"></i></label>
+							<input type="author" name="BOOK_AUTHOR" id="BOOK_AUTHOR"  placeholder="Author" />
+						</div>
+						<div class="form-group">
+							<label for="genre"><i class="zmdi zmdi-graduation-cap"></i></label>
+							<input type="genre" name="BOOK_GENRE" id="BOOK_GENRE" placeholder="Genre"/>
+						</div>
+						<div class="form-group">
+							<label for="edition"><i class="zmdi zmdi-calendar"></i></label>
+							<input type="edition" name="BOOK_EDITION" id="BOOK_EDITION" placeholder="Edition" />
 						</div>
 						<div class="form-group my-4">
-							<label class="my-2" for="BOOK_AUTHOR">Author</label>
-							<input type="text" name="BOOK_AUTHOR" class="form-control" id="BOOK_AUTHOR" placeholder="Enter Author">
-						</div>
-						<div class="form-group my-4">
-							<label class="my-2" for="BOOK_GENRE">Genre</label>
-							<input type="text" name="BOOK_GENRE" class="form-control" id="BOOK_GENRE" placeholder="Enter Genre">
-						</div>
-						<div class="form-group my-4">
-							<label class="my-2" for="BOOK_EDITION">Edition</label>
-							<input type="text" name="BOOK_EDITION" class="form-control" id="BOOK_EDITION" placeholder="Enter Edition">
-						</div>
 						<button type="submit" name="add" class="btn btn-primary">Add</button>
 						<a href="index.php" class="btn btn-warning">Back</a>
+						</div>
 					</form>
+				</div>
+				<div class="signup-image">
+					<figure><img src="images/signup-image.jpg" alt="sing up image"></figure>
 				</div>
 			</div>
 		</div>
 	</section>
+</div>
 <?php include 'footer.php'; ?>

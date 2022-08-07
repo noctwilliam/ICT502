@@ -1,3 +1,4 @@
+
 <?php
 	require "connect.php";
 	$BOOK_ISBN = $_GET['BOOK_ISBN'];
@@ -34,34 +35,40 @@
 ?>
 
 <?php include 'header.php'; ?>
-	<section class="edit">
-		<form action="" method="POST">
-			<div class="container my-5">
-				<div class="row">
-					<div class="col col-md-6">
-						<div class="form-group my-4">
-							<label for="BOOK_TITLE">Title</label>
-							<input type="text" class="form-control" name="BOOK_TITLE_input" value="<?php echo $row['BOOK_TITLE']; ?>">
+<div class="main">
+	<section class="signup">
+		<div class="container">
+			<div class="signup-content">
+				<div class="signup-form">
+					<h2 class="form-title">Edit Book Details</h2>
+					<form method="POST" class="register-form" id="register-form">
+						<div class="form-group">
+							<label for="title"><i class="zmdi zmdi-book"></i></label>
+							<input type="title" name="BOOK_TITLE_input" id="title"  placeholder="Title" value="<?php echo $row['BOOK_TITLE']; ?>"/>
 						</div>
-						<div class="form-group my-4">
-							<label for="BOOK_AUTHOR">Author</label>
-							<input type="text" class="form-control" name="BOOK_AUTHOR_input" value="<?php echo $row['BOOK_AUTHOR']; ?>">
+						<div class="form-group">
+							<label for="author"><i class="zmdi zmdi-account material-icons-name"></i></label>
+							<input type="author" name="BOOK_AUTHOR_input" id="author"  placeholder="Author" value="<?php echo $row['BOOK_AUTHOR']; ?>"/>
 						</div>
-						<div class="form-group my-4">
-							<label for="BOOK_GENRE">Genre</label>
-							<input type="text" class="form-control" name="BOOK_GENRE_input" value="<?php echo $row['BOOK_GENRE']; ?>">
+						<div class="form-group">
+							<label for="genre"><i class="zmdi zmdi-graduation-cap"></i></label>
+							<input type="genre" name="BOOK_GENRE_input" id="genre" placeholder="Genre" value="<?php echo $row['BOOK_GENRE']; ?>"/>
 						</div>
-						<div class="form-group my-4">
-							<label for="BOOK_EDITION">Edition</label>
-							<input type="text" class="form-control" name="BOOK_EDITION_input" value="<?php echo $row['BOOK_EDITION']; ?>">
+						<div class="form-group">
+							<label for="edition"><i class="zmdi zmdi-calendar"></i></label>
+							<input type="edition" name="BOOK_EDITION_input" id="edition" placeholder="Edition" value="<?php echo $row['BOOK_EDITION']; ?>"/>
 						</div>
 						<div class="form-group my-4">
 							<input type="submit" class="btn btn-primary" name="update" value="Update">
 							<a href="index.php" class="btn btn-danger">Cancel</a>
 						</div>
-					</div>
+					</form>
+				</div>
+				<div class="signup-image">
+					<figure><img src="images/signup-image.jpg" alt="sing up image"></figure>
 				</div>
 			</div>
-		</form>
+		</div>
 	</section>
+</div>
 <?php include 'footer.php'; ?>
