@@ -1,7 +1,7 @@
 <?php
 	require "connect.php";
-	$BOOK_ISBN = $_GET['BOOK_ISBN'];
-	$query = "DELETE FROM BOOK WHERE BOOK_ISBN = '$BOOK_ISBN'";
+	$REPORT_ID = $_GET['REPORT_ID'];
+	$query = "DELETE FROM REPORTS WHERE REPORT_ID = '$REPORT_ID'";
 	$execute = oci_parse($connect, $query);
 	oci_execute($execute);
 
@@ -12,4 +12,3 @@
 		echo "<script>alert('Failed to Delete!')</script>";
 		header("Location: index.php");
 	}
-?>

@@ -14,6 +14,7 @@
 					<div class="col-auto"><button type="submit" name="search" class="btn btn-primary">Search</button></div>
 				</form>
 			</div>
+			<h2 class="form-title">Books List</h2>
 			<table class="table table-striped">
 				<thead>
 					<tr>

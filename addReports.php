@@ -30,21 +30,20 @@ if (isset($_POST['add'])) {
 						<div class="form-group">
 							<p class="my-2">BOOK TITLE</p>
 							<label for="BOOK_ISBN"></label>
-							
-							<select class="form-select" aria-label="Default select example">
+							<select name="BOOK_ISBN" class="form-control">
 								<?php
 								$books_query = "SELECT * FROM BOOK";
 								$books_result = oci_parse($connect, $books_query);
 								oci_execute($books_result);
 								while ($data = oci_fetch_array($books_result)) { ?>
-									<option value="<?php echo $data['BOOK_ISBN']; ?>"><?php echo $data['BOOK_TITLE']; ?></option>
+									<option value="<?php echo $data['BOOK_ISBN']; ?>" ><?php echo $data['BOOK_TITLE']; ?></option>
 								<?php } ?>
 							</select>
 						</div>
 						<div class="form-group">
 							<p>USER NAME</p>
 							<label for="USER_ID"></label>
-							<select class="form-select">
+							<select name="USER_ID" class="form-control">
 								<?php
 								$users_query = "SELECT * FROM USERS";
 								$users_result = oci_parse($connect, $users_query);
